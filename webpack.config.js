@@ -1,5 +1,9 @@
-import path from "path";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default {
   mode: "production",
@@ -8,7 +12,6 @@ export default {
     extensions: [".ts"],
   },
   output: {
-    libraryTarget: "node",
     path: path.join(__dirname, "dist"),
     filename: "index.js",
   },
