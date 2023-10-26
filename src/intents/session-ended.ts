@@ -1,5 +1,4 @@
 import { HandlerInput } from "ask-sdk-core";
-import { messages } from "src/constants";
 
 export const SessionEndedRequest = {
   canHandle(handlerInput: HandlerInput) {

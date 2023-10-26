@@ -1,4 +1,5 @@
 import {DefaultApiClient, SkillBuilders} from "ask-sdk-core";
+
 import { LaunchRequest } from "./intents/launch";
 import { GetAddressError, GetAddressIntent } from "./intents/get-address";
 import { SessionEndedRequest } from "./intents/session-ended";

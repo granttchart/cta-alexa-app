@@ -1,5 +1,5 @@
 import { HandlerInput } from "ask-sdk-core";
-import { messages } from "src/constants";
+import { messages } from "../../src/constants";
 import { speakError } from "../utils/speak-error";
 
 export const GetAddressIntent = {
@@ -14,17 +14,6 @@ export const GetAddressIntent = {
   async handle(handlerInput: HandlerInput) {
     const { requestEnvelope, serviceClientFactory, responseBuilder } =
       handlerInput;
-
-    const consentToken =
-      requestEnvelope.context.System.user.permissions &&
-      requestEnvelope.context.System.user.permissions.consentToken;
-
-    if (!consentToken) {
-      return responseBuilder
-        .speak(messages.NOTIFY_MISSING_PERMISSIONS)
-        .withAskForPermissionsConsentCard(messages.PERMISSIONS)
-        .getResponse();
-    }
 
     try {
       const deviceId = requestEnvelope.context.System.device?.deviceId;
