@@ -1,37 +1,50 @@
+import { getNextTrainByStop } from './../api/get-next-train';
 import { HandlerInput } from 'ask-sdk-core';
+
+import { messages } from 'src/constants';
 import { stopIds } from 'src/enums/stop-ids';
 
 export const getNextTrainIntent = {
   canHandle(handlerInput: HandlerInput) {
     const { request } = handlerInput.requestEnvelope;
+    const canHandle = request.type === "IntentRequest" && request.intent.name === "nextTrainIntent";
 
-    return (
-      request.type === "IntentRequest" &&
-      request.intent.name === "GetNextTrainIntent"
-    );
+    console.log("getNextTrainIntent canHandle", canHandle);
+    return canHandle;
   },
   async handle(handlerInput: HandlerInput) {
     const { responseBuilder } =
       handlerInput;
 
     try {
-      let stopInput = '';
+      let stopNameInput = '';
 
-      const stopLookupId = stopIds.filter((stop) => {
-        return new RegExp(stopInput).test(stop.name);
+      const stopLookupResults = stopIds.filter((stop) => {
+        return new RegExp(stopNameInput).test(stop.stopName);
       });
 
-      if (!stopLookupId.length) {
+      if (!stopLookupResults.length) {
         return responseBuilder
-          .speak(`Sorry, I didn't find a stop by the name ${stopInput}.`)
+          .speak(`Sorry, I didn't find a stop by the name ${stopNameInput}.`)
           .getResponse();
       }
-      
 
-      response = responseBuilder.speak(ADDRESS_MESSAGE).getResponse();
+      if (stopLookupResults.length > 1) {
+        const multipleStopMessage = stopLookupResults.map((stop) => stop.stopName);
+        return responseBuilder
+          .speak(`I found multiple stops: ${multipleStopMessage.join(', ')}. Which one did you mean?`)
+          .getResponse();
+      }
 
+      const singleStopResult = stopLookupResults[0];
 
-      return response;
+      const nextTrainResponse = await getNextTrainByStop(
+        `${singleStopResult.stopId}`
+      );
+
+      return responseBuilder
+        .speak(`The next train for ${singleStopResult.stopName} is coming in ${nextTrainResponse}.`)
+        .getResponse();
     } catch (error) {
       return responseBuilder.speak(messages.ERROR).getResponse();
     }

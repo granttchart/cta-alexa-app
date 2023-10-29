@@ -4,9 +4,9 @@ Hey there! This codebase powers an Alexa skill capable of retrieving the latest 
 
 ## Sample utterances
 
-Alexa, when is the next red line train?
+Alexa, when is the next red line train for Thorndale?
 Alexa, when is the next 87 bus?
 
 ## Privacy
 
-This skill uses your device's location as provided by the Alexa API. However, no location information is stored.
+This skill does not store any information shared with it.

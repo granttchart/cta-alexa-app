@@ -1,9 +1,9 @@
 {
   "name": "cta-alexa-app",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "./src/index.js",
-  "author": "Grant Park <grantdotlocal@gmail.com>",
+  "author": "Grant Park <grant@grant.mozmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "webpack"
@@ -21,6 +21,7 @@
     "cache-loader": "^4.1.0",
     "fork-ts-checker-webpack-plugin": "^9.0.0",
     "lambda-local": "^2.1.2",
+    "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"

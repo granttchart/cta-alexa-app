@@ -13,6 +13,6 @@ export const CancelIntent = {
     );
   },
   handle(handlerInput: HandlerInput) {
-    return handlerInput.responseBuilder.speak(messages.GOODBYE).getResponse();
+    return handlerInput.responseBuilder.speak(messages.STOP).getResponse();
   },
 };

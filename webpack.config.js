@@ -1,6 +1,6 @@
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import path from 'path';
 import { fileURLToPath } from 'url';
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,18 +19,9 @@ export default {
   module: {
     rules: [
       {
-        // Include ts, tsx, js, and jsx files.
-        test: /\.(ts|js)x?$/,
+        test: /\.ts$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "cache-loader",
-            options: {
-              cacheDirectory: path.resolve(".webpackCache"),
-            },
-          },
-          "babel-loader",
-        ],
       },
     ],
   },
