@@ -4,8 +4,8 @@ Hey there! This codebase powers an Alexa skill capable of retrieving the latest 
 
 ## Sample utterances
 
-Alexa, when is the next red line train for Thorndale?
-Alexa, when is the next 87 bus?
+* Alexa, when is the next red line train for Thorndale?
+* Alexa, when is the next 87 bus for Cottage Grove?
 
 ## Privacy
 

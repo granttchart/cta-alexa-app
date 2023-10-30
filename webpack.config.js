@@ -1,20 +1,13 @@
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  mode: "production",
-  entry: "./src/index.ts",
-  resolve: {
-    extensions: [".ts"],
-  },
-  output: {
-    path: path.join(__dirname, "dist"),
-    filename: "index.js",
-  },
+  entry: './src/index.ts',
+  mode: 'production',
   target: "node",
   module: {
     rules: [
@@ -25,5 +18,14 @@ export default {
       },
     ],
   },
-  plugins: [new ForkTsCheckerWebpackPlugin()],
+  resolve: {
+    extensions: ['.ts', '.js'],
+    plugins: [
+      new TsconfigPathsPlugin()
+    ]
+  },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
 };
