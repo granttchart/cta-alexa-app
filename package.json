@@ -1,12 +1,13 @@
 {
-  "name": "cta-alexa-app",
+  "name": "cta-next-arrival-alexa-skill",
   "type": "module",
   "version": "0.1.0",
   "main": "./src/index.js",
   "author": "Grant Park <grant@grant.mozmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "serverless deploy"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.438.0",
@@ -19,13 +20,14 @@
     "cache-loader": "^4.1.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "lambda-local": "^2.1.2",
+    "serverless": "^3.36.0",
     "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
-    "tsconfig-paths-webpack-plugin": "^4.1.0",
-    "@types/node": "^20.8.9"
+    "@types/node": "^20.8.9",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
   }
 }
